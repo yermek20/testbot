@@ -39,7 +39,7 @@ def lalala(message):
     elif message.text == 'О нас':
         bot.send_message(message.chat.id, "Здраствуйте, {0.first_name} {0.last_name}!\nЯ - бот <b>{1.first_name}</b>\nМы - компания. Официальный представитель государственных и частных Российских и Европейских вуз-ов в средней Азии".format(message.from_user, bot.get_me()),
         parse_mode='html')
-        bot.send_message(message.chat.id, 'Для удобства')
+        bot.send_message(message.chat.id, 'Ссылка на ютуб')
     elif message.text == 'Связаться с нами':
         bot.send_message(message.chat.id, 'Напишите нашему оператору @taukee')
     else:
@@ -59,6 +59,7 @@ def callback_inline(call):
     it1 = telebot.types.InlineKeyboardButton('МосАП', callback_data='МосАП')
     it2 = telebot.types.InlineKeyboardButton('Реавиз', callback_data='Реавиз')
     it3 = telebot.types.InlineKeyboardButton('ММА', callback_data='ММА')
+   
     markup2.add(item, item2, item3, item4)
     markup3.add(it1, it2, it3)
 
@@ -74,7 +75,7 @@ def callback_inline(call):
                 omga.close()
                 bot.send_message(call.message.chat.id, 'Вы можете связаться с нашим оператором @jambo_a')
             elif call.data == 'Москва':
-                bot.send_message(call.message.chat.id, 'В Москве расположены три университета, выберите из списка')
+                bot.send_message(call.message.chat.id, 'В Москве расположены три университета, пожалуйста, выберите из списка:\n1.МосАП\n2.Реавиз\n3.ММА', reply_markup=markup3)
                 bot.send_message(call.message.chat.id, 'https://www.youtube.com/watch?v=vfUrK9pFfUg')
             elif call.data == 'МосАП':
                 bot.send_message(call.message.chat.id, 'Московская академия предпринимательства')
@@ -103,7 +104,7 @@ def callback_inline(call):
                 bot.send_message(call.message.chat.id, 'Вы можете связаться с нашим оператором @jambo_a')
             elif call.data == 'Иркутск':
                 bot.send_message(call.message.chat.id, 'Иркутский национальный иследовательский университет')
-                bot.send_document(call.message.chat.id, 'Иркутский')
+                bot.send_document(call.message.chat.id, open('files/mosap.png', 'rb'))
                 bot.send_message(call.message.chat.id, 'Иркутский')
                 bot.send_message(call.message.chat.id, 'Подождите минуту, мы отправляем вам файл со специальностями')
                 omga = open('files/irnitu0.pdf', 'rb')
